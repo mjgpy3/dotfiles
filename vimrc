@@ -40,3 +40,28 @@ set t_vb=
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
 :imap <c-s> <Esc><c-s>
+
+" Documentation off of a def signiture
+:map! rd call DefDoc()
+
+function DefDoc()
+	let line=getline('.')
+	let comment_lines=["# Xx", "#"]
+	let indents=matchstr(line, '^\s*')
+	let params=MyStrip(split(line, '(')[-1])[:-2]
+	for param in split(params, ',')
+		let clean_param = MyStrip(param)
+		let param_name = matchstr(clean_param, '^\w*')
+		call add(comment_lines, '# @param [Xx] ' . param_name . ' Xx') 
+	endfor
+	call add(comment_lines, '# @return [Xx] Xx')
+	let comment_lines=reverse(comment_lines)
+	for line in comment_lines
+		let indented_line=indents . line
+		-1put =indented_line
+	endfor
+endfunction
+
+function MyStrip(str)
+	return substitute(a:str, '^\s\+\|\s\+$', '', 'g')
+endfunction
