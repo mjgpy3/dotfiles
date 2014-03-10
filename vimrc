@@ -42,7 +42,7 @@ set t_vb=
 :imap <c-s> <Esc><c-s>
 
 " Documentation off of a def signiture
-:map rd call DefDoc()
+:ca rd call DefDoc()
 
 function DefDoc()
 	let line=getline('.')
