@@ -36,6 +36,13 @@ set noerrorbells
 set visualbell
 set t_vb=
 
+" Search highlighting
+set hlsearch
+
+" Show trailing whitespace
+highlight ExtraWhitespace ctermbg=white guibg=darkgreen
+match ExtraWhitespace /\s\+$/
+
 " Ctrl+s to save
 :nmap <c-s> :w<CR>
 :imap <c-s> <Esc>:w<CR>a
