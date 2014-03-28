@@ -1,0 +1,3 @@
+# From http://www.commandlinefu.com/commands/view/6019/have-a-random-cow-say-a-random-thing
+#  - needs cowsay and fortune
+fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
