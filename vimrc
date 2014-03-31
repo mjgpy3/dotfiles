@@ -50,11 +50,20 @@ match ExtraWhitespace /\s\+$/
 
 " Documentation off of a def signiture
 :ca rd call DefDoc()
+:ca rs call BuildSpecTest()
+
+let mapleader=","
+
+" Kill pesky arrow keys
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
 
 function DefDoc()
 	let line=getline('.')
 	let comment_lines=["# Xx", "#"]
-	let indents=matchstr(line, '^\s*')
+	let indents=GetIndent()
 	let params=MyStrip(split(line, '(')[-1])[:-2]
 	for param in split(params, ',')
 		let clean_param = MyStrip(param)
@@ -69,6 +78,19 @@ function DefDoc()
 	endfor
 endfunction
 
+function BuildSpecTest()
+	let indents=GetIndent()
+	let indentedtest="\n" . indents . "it 'Xx' do\n" . indents . "end\n"
+	put =indentedtest
+	call search('Xx', 'b')
+	normal cw
+endfunction
+
 function MyStrip(str)
 	return substitute(a:str, '^\s\+\|\s\+$', '', 'g')
+endfunction
+
+function GetIndent()
+	let line=getline('.')
+	return matchstr(line, '^\s*')
 endfunction
