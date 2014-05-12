@@ -7,7 +7,7 @@ syntax on
 
 augroup myfiletypes
   autocmd!
-  autocmd FileType ruby,html setlocal ai sw=2 sts=2 et
+  autocmd FileType ruby,html,haskell setlocal ai sw=2 sts=2 et
   autocmd Filetype javascript,coffee,python setlocal ai sw=4 sts=4 et
 augroup END
 
