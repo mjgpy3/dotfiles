@@ -54,6 +54,9 @@ match ExtraWhitespace /\s\+$/
 
 let mapleader=","
 
+" I put this where I don't want to leave technical debt...
+let @g='O# Gilli did ths!€kb€kbis!!!'
+
 " Kill pesky arrow keys
 map <up> <nop>
 map <down> <nop>
