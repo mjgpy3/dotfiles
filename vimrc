@@ -48,6 +48,9 @@ match ExtraWhitespace /\s\+$/
 :imap <c-s> <Esc>:w<CR>a
 :imap <c-s> <Esc><c-s>
 
+" Exit insert mode, write with 'jk'
+inoremap jk <Esc>:w<cr>
+
 " Documentation off of a def signiture
 :ca rd call DefDoc()
 :ca rs call BuildSpecTest()
@@ -55,7 +58,7 @@ match ExtraWhitespace /\s\+$/
 let mapleader=","
 
 " I put this where I don't want to leave technical debt...
-let @g='O# Gilli did ths!€kb€kbis!!!'
+let @g='O# Gilli did ths!â‚¬kbâ‚¬kbis!!!'
 
 " Kill pesky arrow keys
 map <up> <nop>
