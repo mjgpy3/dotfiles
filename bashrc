@@ -13,7 +13,7 @@ alias 4..="cd ../../../.."
 
 ## Git aliases
 alias rk='git remote prune origin; git fetch'
-alias ac='git add -A && git commit'
+alias ac='git add -A && git commit -v'
 alias gs='git status'
 
 ## Docker aliases
