@@ -1,0 +1,25 @@
+[
+  {
+    "token": "g",
+    "command": "git",
+    "branches": [
+      {
+        "token": "l",
+        "command": "log"
+      },
+      {
+        "name": "verbose commit",
+        "command": "commit -v"
+      }, {
+        "token": "ac",
+        "command": "add -A",
+        "onSuccessRun": "verbose commit"
+      }
+    ]
+  },
+  {
+    "token": "gitdr",
+    "command": "for i in PARAMS_GO_HERE; do git push origin \":$i\"; done",
+    "splatParamsInto": "PARAMS_GO_HERE"
+  }
+]
