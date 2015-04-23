@@ -14,6 +14,9 @@
         "token": "ac",
         "command": "add -A",
         "onSuccessRun": "verbose commit"
+      }, {
+        "token": "dl",
+        "command": "branch -D"
       }
     ]
   },
