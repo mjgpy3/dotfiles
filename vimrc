@@ -61,18 +61,36 @@ endfunction
 let maplocalleader=","
 let mapleader=","
 
-function! MjgJsTestDesc(type)
-  let l:fn_call = "normal! oTHING('', function () {\<CR>});"
+function! MjgJsTestEntity(type, has_block)
+  let l:fn_call = "normal! oTHINGfunction () {\<CR>});"
   let l:fn_call = substitute(l:fn_call, "THING", a:type, "")
   execute l:fn_call
-  execute "normal! /''\<CR>"
+  if a:has_block
+    execute "normal! ?''\<CR>"
+  endif
 endfunction
 
 function! MapMjgJsTest()
-  nnoremap <buffer> <localleader>d :call MjgJsTestDesc('describe')<ENTER>
-  nnoremap <buffer> <localleader>i :call MjgJsTestDesc('it')<ENTER>
+  nnoremap <buffer> <localleader>d :call MjgJsTestEntity("describe('', ", 1)<ENTER>
+  nnoremap <buffer> <localleader>i :call MjgJsTestEntity("it('', ", 1)<ENTER>
+  nnoremap <buffer> <localleader>b :call MjgJsTestEntity("beforeEach(", 0)<ENTER>
 endfunction
 
+function! MjgJsFunction()
+  execute "normal! $i function () {\<CR>}"
+  execute "normal! ?()\<CR>"
+endfunction
+
+function! MjgJsSemicolon()
+  execute "normal! $%a;"
+endfunction
+
+function! MapMjgJs()
+  nnoremap <buffer> <localleader>f :call MjgJsFunction()<ENTER>
+  nnoremap <buffer> <localleader>s :call MjgJsSemicolon()<ENTER>
+endfunction
+
+au FileType javascript call MapMjgJs()
 au User MapMjgJsTestEvent call MapMjgJsTest()
 
 " Detect JS Test files
