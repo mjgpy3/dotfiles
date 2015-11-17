@@ -55,12 +55,16 @@ endfunction
 
 function! CommitFromGitDirectory()
   let l:base_path = '.'
+  let l:pwd=fnamemodify('.', ':p')
   while empty(globpath(l:base_path, '.git'))
-    echo l:base_path
     let l:base_path = l:base_path . '/..'
+    if simplify(fnamemodify('.', ':p') . l:base_path) == '/'
+      echo ".git not found in ancestor directories!"
+      return
+    endif
   endwhile
   echo "Found . git at " . l:base_path
-  let l:cmd = "!/usr/bin/git add " . l:base_path . " && git commit -v"
+  let l:cmd = "!/usr/bin/git add --all " . l:base_path . " && git commit -v"
   execute l:cmd
 endfunction
 
