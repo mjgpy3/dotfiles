@@ -98,6 +98,7 @@ endfunction
 function! MapMjgJs()
   nnoremap <buffer> <localleader>f :call MjgJsFunction()<ENTER>
   nnoremap <buffer> <localleader>s :call MjgJsSemicolon()<ENTER>
+  nnoremap <buffer> <localleader>c I// <esc>
 endfunction
 
 function! MjgMarkdownCode()
