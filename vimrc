@@ -124,10 +124,6 @@ au FileType javascript call MapMjgJs()
 au User MapMjgJsTestEvent call MapMjgJsTest()
 
 " Detect JS Test files
-au BufNewFile,BufRead *test.js doautocmd User MapMjgJsTestEvent
-au BufNewFile,BufRead test*.js doautocmd User MapMjgJsTestEvent
-au BufNewFile,BufRead *Test.js doautocmd User MapMjgJsTestEvent
-au BufNewFile,BufRead *Spec.js doautocmd User MapMjgJsTestEvent
-au BufNewFile,BufRead *spec.js doautocmd User MapMjgJsTestEvent
+au BufNewFile,BufRead *test.js,test*.js,*Test.js,*Spec.js,*spec.js doautocmd User MapMjgJsTestEvent
 
 nnoremap <buffer> <leader>a :call CommitFromGitDirectory()<ENTER>
