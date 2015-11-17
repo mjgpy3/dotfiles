@@ -64,7 +64,7 @@ function! CommitFromGitDirectory()
     endif
   endwhile
   echo "Found . git at " . l:base_path
-  let l:cmd = "!/usr/bin/git add --all " . l:base_path . " && git commit -v"
+  let l:cmd = "!git add --all " . l:base_path . " && git commit -v"
   execute l:cmd
 endfunction
 
