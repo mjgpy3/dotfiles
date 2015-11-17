@@ -38,11 +38,6 @@ set hlsearch
 highlight ExtraWhitespace ctermbg=white guibg=darkgreen
 match ExtraWhitespace /\s\+$/
 
-" Ctrl+s to save
-:nmap <c-s> :w<CR>
-:imap <c-s> <Esc>:w<CR>a
-:imap <c-s> <Esc><c-s>
-
 " Kill pesky arrow keys
 map <up> <nop>
 map <down> <nop>
