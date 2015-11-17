@@ -44,9 +44,6 @@ match ExtraWhitespace /\s\+$/
 :imap <c-s> <Esc>:w<CR>a
 :imap <c-s> <Esc><c-s>
 
-" I put this where I don't want to leave technical debt...
-let @g='O# M.J.G. did ths!€kb€kbis!!!'
-
 " Kill pesky arrow keys
 map <up> <nop>
 map <down> <nop>
@@ -62,5 +59,19 @@ function GetIndent()
 	return matchstr(line, '^\s*')
 endfunction
 
-let maplocalleader = ","
+let maplocalleader=","
 let mapleader=","
+
+function! MjgJsTestDescribe()
+  execute "normal! odescribe('', function () {\<CR>});"
+  execute "normal! /''\<CR>"
+endfunction
+
+function! MapMjgJsTest()
+  nnoremap <buffer> <localleader>d :call MjgJsTestDescribe()<ENTER>
+endfunction
+
+au User MapMjgJsTestEvent call MapMjgJsTest()
+
+" Detect JS Test files
+au BufNewFile,BufRead *test.js doautocmd User MapMjgJsTestEvent
