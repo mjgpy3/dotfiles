@@ -100,6 +100,11 @@ function! MapMjgJs()
   nnoremap <buffer> <localleader>s :call MjgJsSemicolon()<ENTER>
 endfunction
 
+function! MapMjgMarkdown()
+ set spell
+endfunction
+
+au FileType markdown call MapMjgMarkdown()
 au FileType javascript call MapMjgJs()
 au User MapMjgJsTestEvent call MapMjgJsTest()
 
