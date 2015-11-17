@@ -100,8 +100,23 @@ function! MapMjgJs()
   nnoremap <buffer> <localleader>s :call MjgJsSemicolon()<ENTER>
 endfunction
 
+function! MjgMarkdownCode()
+  execute "normal! o\`\`\`\<CR>\`\`\`\<esc>O"
+endfunction
+
+function! MjgMarkdownBullet()
+  let l:line = getline('.')
+  if l:line =~ '\s*-'
+    execute "normal! yyp0f-lDa "
+  else
+    execute "normal! o  - "
+  endif
+endfunction
+
 function! MapMjgMarkdown()
  set spell
+ nnoremap <buffer> <localleader>c :call MjgMarkdownCode()<ENTER>
+ nnoremap <buffer> <localleader>b :call MjgMarkdownBullet()<ENTER>
 endfunction
 
 au FileType markdown call MapMjgMarkdown()
