@@ -3,8 +3,7 @@ syntax on
 
 augroup myfiletypes
   autocmd!
-  autocmd FileType ruby,html,haskell,puppet setlocal ai sw=2 sts=2 et
-  autocmd Filetype javascript,coffee,python setlocal ai sw=4 sts=4 et
+  autocmd FileType python,javascript,ruby,html,haskell,puppet setlocal ai sw=2 sts=2 et
 augroup END
 
 " Set toggle spelling key
@@ -62,13 +61,16 @@ endfunction
 let maplocalleader=","
 let mapleader=","
 
-function! MjgJsTestDescribe()
-  execute "normal! odescribe('', function () {\<CR>});"
+function! MjgJsTestDesc(type)
+  let l:fn_call = "normal! oTHING('', function () {\<CR>});"
+  let l:fn_call = substitute(l:fn_call, "THING", a:type, "")
+  execute l:fn_call
   execute "normal! /''\<CR>"
 endfunction
 
 function! MapMjgJsTest()
-  nnoremap <buffer> <localleader>d :call MjgJsTestDescribe()<ENTER>
+  nnoremap <buffer> <localleader>d :call MjgJsTestDesc('describe')<ENTER>
+  nnoremap <buffer> <localleader>i :call MjgJsTestDesc('it')<ENTER>
 endfunction
 
 au User MapMjgJsTestEvent call MapMjgJsTest()
