@@ -53,8 +53,19 @@ function GetIndent()
 	return matchstr(line, '^\s*')
 endfunction
 
+function! CommitFromGitDirectory()
+  let l:base_path = '.'
+  while empty(globpath(l:base_path, '.git'))
+    echo l:base_path
+    let l:base_path = l:base_path . '/..'
+  endwhile
+  echo "Found . git at " . l:base_path
+  let l:cmd = "!/usr/bin/git add " . l:base_path . " && git commit -v"
+  execute l:cmd
+endfunction
+
 let maplocalleader=","
-let mapleader=","
+let mapleader="\\"
 
 function! MjgJsTestEntity(type, has_block)
   let l:fn_call = "normal! oTHINGfunction () {\<CR>});"
@@ -94,3 +105,5 @@ au BufNewFile,BufRead test*.js doautocmd User MapMjgJsTestEvent
 au BufNewFile,BufRead *Test.js doautocmd User MapMjgJsTestEvent
 au BufNewFile,BufRead *Spec.js doautocmd User MapMjgJsTestEvent
 au BufNewFile,BufRead *spec.js doautocmd User MapMjgJsTestEvent
+
+nnoremap <buffer> <leader>a :call CommitFromGitDirectory()<ENTER>
