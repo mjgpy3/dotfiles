@@ -75,3 +75,7 @@ au User MapMjgJsTestEvent call MapMjgJsTest()
 
 " Detect JS Test files
 au BufNewFile,BufRead *test.js doautocmd User MapMjgJsTestEvent
+au BufNewFile,BufRead test*.js doautocmd User MapMjgJsTestEvent
+au BufNewFile,BufRead *Test.js doautocmd User MapMjgJsTestEvent
+au BufNewFile,BufRead *Spec.js doautocmd User MapMjgJsTestEvent
+au BufNewFile,BufRead *spec.js doautocmd User MapMjgJsTestEvent
