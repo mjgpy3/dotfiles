@@ -6,7 +6,7 @@ syntax on
 augroup myfiletypes
   autocmd!
   autocmd FileType java setlocal ai sw=4 sts=4 et
-  autocmd FileType yaml,python,javascript,ruby,html,haskell,puppet setlocal ai sw=2 sts=2 et
+  autocmd FileType yaml,python,javascript,ruby,html,haskell,puppet,fsharp setlocal ai sw=2 sts=2 et
 augroup END
 
 " Set toggle spelling key
