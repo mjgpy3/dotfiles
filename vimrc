@@ -83,10 +83,25 @@ function! MjgJsTestEntity(type, has_block)
   endif
 endfunction
 
+function! MjgFsTestType()
+  let l:the_type = "normal! o\<ESC>o\<ESC>itype``xx``() =\<ESC>0d^/xx\<CR>"
+  execute l:the_type
+endfunction
+
+function! MjgFsTestMember()
+  let l:the_member = "normal! o\<ESC>o\<ESC>i  [<Test>]\<ESC>o\<ESC>i  member __.``xx``() =\<ESC>otest <@ xx @>\<ESC>/xx\<CR>"
+  execute l:the_member
+endfunction
+
 function! MapMjgJsTest()
   nnoremap <buffer> <localleader>d :call MjgJsTestEntity("describe('', ", 1)<ENTER>
   nnoremap <buffer> <localleader>i :call MjgJsTestEntity("it('', ", 1)<ENTER>
   nnoremap <buffer> <localleader>b :call MjgJsTestEntity("beforeEach(", 0)<ENTER>
+endfunction
+
+function! MapMjgFsTest()
+  nnoremap <buffer> <localleader>d :call MjgFsTestType()<ENTER>
+  nnoremap <buffer> <localleader>i :call MjgFsTestMember()<ENTER>
 endfunction
 
 function! MjgJsFunction()
@@ -125,9 +140,14 @@ endfunction
 
 au FileType markdown call MapMjgMarkdown()
 au FileType javascript call MapMjgJs()
+
 au User MapMjgJsTestEvent call MapMjgJsTest()
+au User MapMjgFsTestEvent call MapMjgFsTest()
 
 " Detect JS Test files
 au BufNewFile,BufRead *test.js,test*.js,*Test.js,*Spec.js,*spec.js doautocmd User MapMjgJsTestEvent
 
 nnoremap <buffer> <leader>a :call CommitFromGitDirectory()<ENTER>
+
+" Detect F# Test files
+au BufNewFile,BufRead *test.fs,test*.fs,*Test.fs,*Spec.fs,*spec.fs doautocmd User MapMjgFsTestEvent
