@@ -1,0 +1,18 @@
+.import-prompt,
+.LiveVideoHomePageModuleContainer,
+.Footer,
+.Trends,
+li.active,
+.js-nav span.text,
+.global-dm-nav span.text,
+.DashboardProfileCard,
+.dashboard.dashboard-right,
+.moments.js-moments-tab {
+    display: none;
+}
+.top-timeline-tweetbox {
+    padding-left: 25%;
+}
+.promoted-tweet {
+    display: none;
+}

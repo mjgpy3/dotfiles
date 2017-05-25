@@ -1,0 +1,23 @@
+body {
+  background-color: black;
+}
+
+a.cur_url {
+    color: green !important;
+}
+
+div.voters,
+#headerright,
+#footer,
+a[href="/comments"],
+.description_present,
+#l_holder { display: none; }
+
+.byline { opacity: 0; }
+.byline:hover { opacity: 1; }
+
+.tag_haskell {
+  color: green !important;
+  background-color: black !important;
+  border: 1px solid green !important;
+}
