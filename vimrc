@@ -20,6 +20,8 @@ set backup
 set backupdir=~/.vim/backup
 set directory=~/.vim/tmp
 
+set lazyredraw
+
 " Automatically change directory to current file
 set autochdir
 
