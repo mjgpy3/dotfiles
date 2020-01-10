@@ -8,4 +8,4 @@ fi
 
 TEST=`grep -oP 'func\s+\K(Test\w+)' $1 | dmenu`
 
-go test -v -timeout 100m . -run $TEST
+go test -v -timeout 100m . -count 1 -run $TEST
