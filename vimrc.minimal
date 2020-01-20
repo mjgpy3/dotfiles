@@ -1,0 +1,11 @@
+set expandtab
+set shiftwidth=2
+set softtabstop=2
+
+set autoindent
+
+set colorcolumn=80
+
+syntax on
+
+highlight ColorColumn ctermbg=0 guibg=white
