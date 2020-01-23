@@ -11,5 +11,5 @@ if [ "${FILENAME: -3}" == ".go" ]; then
 fi
 
 if [ "${FILENAME: -3}" == ".js" ]; then
-  npx prettier --single-quote --trailing-comma all --write $1
+  npx prettier --single-quote --write $1
 fi
