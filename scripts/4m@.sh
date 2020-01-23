@@ -9,3 +9,7 @@ fi
 if [ "${FILENAME: -3}" == ".go" ]; then
   go fmt $1
 fi
+
+if [ "${FILENAME: -3}" == ".js" ]; then
+  npx prettier --single-quote --trailing-comma all --write $1
+fi
